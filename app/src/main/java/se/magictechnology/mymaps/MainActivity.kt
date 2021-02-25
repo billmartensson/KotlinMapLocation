@@ -18,7 +18,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -65,7 +64,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     fun getLocation()
     {
-
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -77,10 +75,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION), 1)
             return
         }
+
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0F, object : LocationListener {
             override fun onLocationChanged(p0: Location?) {
 
-                Log.i("BILLDEBUG", p0!!.latitude.toString())
+                Log.i("pia9debug", p0!!.latitude.toString())
 
                 mMap.apply {
                     val mypos = LatLng(p0!!.latitude, p0!!.longitude)
@@ -116,7 +115,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
 
-
         mMap.apply {
             val sydney = LatLng(-33.852, 151.211)
 
@@ -131,7 +129,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
 
-                Log.i("BILLDEBUG", marker.title)
+                Log.i("pia9debug", marker.title)
 
                 return false
             }
